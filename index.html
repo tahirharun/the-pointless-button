@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>the usesless Button 💀</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #111827;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .warning {
+            color: #f87171;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(28px, 7vw, 42px);
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            color: #9ca3af;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .skull {
+            font-size: 65px;
+            margin-bottom: 15px;
+        }
+
+        .roast-box {
+            background: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 18px;
+            padding: 25px 18px;
+            min-height: 170px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        #roastEmoji {
+            font-size: 45px;
+            margin-bottom: 12px;
+        }
+
+        #roastMessage {
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 1.5;
+            overflow-wrap: anywhere;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            margin-bottom: 8px;
+            color: #d1d5db;
+        }
+
+        .progress-track {
+            height: 12px;
+            background: #374151;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
+
+        #progressBar {
+            width: 0%;
+            height: 100%;
+            background: #ef4444;
+            border-radius: 20px;
+            transition: width 0.3s ease;
+        }
+
+        #chaosButton {
+            width: 100%;
+            min-height: 62px;
+            border: none;
+            border-radius: 14px;
+            background: #dc2626;
+            color: white;
+            font-size: 20px;
+            font-weight: 900;
+            cursor: pointer;
+            box-shadow: 0 6px 0 #7f1d1d;
+            transition: transform 0.12s, background 0.2s;
+            touch-action: manipulation;
+        }
+
+        #chaosButton:active:not(:disabled) {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #7f1d1d;
+        }
+
+        #chaosButton:focus-visible,
+        #resetButton:focus-visible {
+            outline: 3px solid #facc15;
+            outline-offset: 4px;
+        }
+
+        #chaosButton:disabled {
+            cursor: not-allowed;
+            background: #4b5563;
+            box-shadow: none;
+        }
+
+        #status {
+            color: #9ca3af;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-top: 22px;
+        }
+
+        #resetButton {
+            margin-top: 20px;
+            padding: 13px 20px;
+            border: 1px solid #4b5563;
+            border-radius: 12px;
+            background: #1f2937;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            min-height: 46px;
+        }
+
+        #resetButton:hover {
+            background: #374151;
+        }
+
+        .shake {
+            animation: shake 0.35s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-6px) rotate(-2deg);
+            }
+
+            50% {
+                transform: translateX(6px) rotate(2deg);
+            }
+
+            75% {
+                transform: translateX(-4px);
+            }
+        }
+
+        .confetti {
+            position: absolute;
+            top: -30px;
+            pointer-events: none;
+            font-size: 25px;
+            animation: fall 1.8s ease-in forwards;
+            z-index: 10;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="container">
+
+        <p class="warning">
+            ⚠️ EXTREMELY UNNECESSARY TECHNOLOGY ⚠️
+        </p>
+
+        <div class="skull" aria-hidden="true">💀</div>
+
+        <h1>THE CHAOS BUTTON</h1>
+
+        <p class="subtitle">
+            Click it. Get roasted. Regret everything. 😂
+        </p>
+
+        <section
+            class="roast-box"
+            id="roastBox"
+            aria-live="polite"
+            aria-atomic="true"
+        >
+            <div id="roastEmoji">😈</div>
+
+            <p id="roastMessage">
+                Go on. Press the button. I dare you.
+            </p>
+        </section>
+
+        <div class="progress-info">
+            <span>ROAST LEVEL 💀</span>
+            <span id="clickCount">0 / 10</span>
+        </div>
+
+        <div
+            class="progress-track"
+            role="progressbar"
+            aria-label="Roast level"
+            aria-valuemin="0"
+            aria-valuemax="10"
+            aria-valuenow="0"
+            id="progressTrack"
+        >
+            <div id="progressBar"></div>
+        </div>
+
+        <button id="chaosButton" type="button">
+            😈 CLICK ME
+        </button>
+
+        <p id="status">
+            Current status: Your dignity is still intact. For now.
+        </p>
+
+        <button id="resetButton" type="button" hidden>
+            🔄 REVIVE THE CHAOS
+        </button>
+
+    </main>
+
+    <script>
+        const chaosButton = document.getElementById("chaosButton");
+        const roastMessage = document.getElementById("roastMessage");
+        const roastEmoji = document.getElementById("roastEmoji");
+        const clickCount = document.getElementById("clickCount");
+        const progressBar = document.getElementById("progressBar");
+        const progressTrack = document.getElementById("progressTrack");
+        const roastBox = document.getElementById("roastBox");
+        const status = document.getElementById("status");
+        const resetButton = document.getElementById("resetButton");
+
+        let clicks = 0;
+        let gameOver = false;
+        let confettiTimers = [];
+
+        // Every click has its own roast.
+        const roasts = [
+            ["🤨", "One click. And you thought you did something."],
+            ["😂", "Your finger is working harder than your brain today."],
+            ["🫠", "Three clicks? Bro thinks there is a prize."],
+            ["🤡", "Congratulations. You're an unpaid button tester."],
+            ["💀", "Five clicks. Even your Wi-Fi has more purpose."],
+            ["😭", "Six clicks?! This button has you on a subscription plan."],
+            ["🗿", "Seven clicks. The rock watching you has better hobbies."],
+            ["🚩", "Eight clicks. This button is your whole personality now."],
+            ["🤖", "NINE?! My calculator has more self-control."],
+            ["🧎", "TEN CLICKS?! I GIVE UP! YOU WIN! PLEASE GO TOUCH GRASS! 😂💀"]
+        ];
+
+        const buttonLabels = [
+            "😈 CLICK AGAIN",
+            "😂 KEEP GOING",
+            "💀 YOU CAN'T STOP",
+            "😂 intersting"
+        ];
+
+        const ordinaryStatuses = [
+            "The button is mildly amused.",
+            "The button is preparing a personal attack.",
+            "WARNING: CRITICAL ROAST LEVEL.",
+            "Your screen is judging you right now."
+        ];
+
+        // Main button action.
+        chaosButton.addEventListener("click", function () {
+
+            if (gameOver) return;
+
+            clicks++;
+
+            const currentRoast = roasts[clicks - 1];
+
+            // Update roast text and emoji.
+            roastEmoji.textContent = currentRoast[0];
+            roastMessage.textContent = currentRoast[1];
+
+            // Update counter and progress bar.
+            clickCount.textContent = `${clicks} / 10`;
+            progressBar.style.width = `${clicks * 10}%`;
+
+            progressTrack.setAttribute("aria-valuenow", clicks);
+
+            // Shake the roast box.
+            roastBox.classList.remove("shake");
+
+            // Restart animation reliably.
+            void roastBox.offsetWidth;
+
+            roastBox.classList.add("shake");
+
+            // Special ending after 10 clicks.
+            if (clicks === 10) {
+
+                gameOver = true;
+
+                chaosButton.textContent = "💀 I GIVE UP!";
+                chaosButton.disabled = true;
+
+                status.textContent =
+                    "FINAL RESULT: You defeated a button. " +
+                    "Please accept your imaginary trophy. 🏆";
+
+                resetButton.hidden = false;
+
+                celebrate();
+
+            } else {
+
+                chaosButton.textContent =
+                    buttonLabels[clicks % buttonLabels.length];
+
+                status.textContent =
+                    ordinaryStatuses[
+                        Math.min(
+                            Math.floor(clicks / 3),
+                            ordinaryStatuses.length - 1
+                        )
+                    ];
+            }
+        });
+
+        // Funny falling emoji celebration.
+        function celebrate() {
+
+            const emojis = ["😂", "💀", "🎉", "🤡", "✨", "🏆"];
+
+            // Respect reduced-motion settings.
+            if (window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            ).matches) {
+                return;
+            }
+
+            for (let i = 0; i < 28; i++) {
+
+                const confetti = document.createElement("span");
+
+                confetti.className = "confetti";
+                confetti.textContent =
+                    emojis[Math.floor(Math.random() * emojis.length)];
+
+                confetti.setAttribute("aria-hidden", "true");
+
+                confetti.style.left = Math.random() * 100 + "vw";
+                confetti.style.animationDelay =
+                    Math.random() * 0.8 + "s";
+
+                document.body.appendChild(confetti);
+
+                const timer = setTimeout(() => {
+                    confetti.remove();
+                }, 3000);
+
+                confettiTimers.push(timer);
+            }
+        }
+
+        // Reset everything and play again.
+        resetButton.addEventListener("click", function () {
+
+            // Clean up any remaining celebration elements.
+            confettiTimers.forEach(clearTimeout);
+            confettiTimers = [];
+
+            document.querySelectorAll(".confetti").forEach(el => {
+                el.remove();
+            });
+
+            clicks = 0;
+            gameOver = false;
+
+            chaosButton.disabled = false;
+            chaosButton.textContent = "😈 CLICK ME";
+
+            roastEmoji.textContent = "😈";
+
+            roastMessage.textContent =
+                "Go on. Press the button. I dare you.";
+
+            clickCount.textContent = "0 / 10";
+
+            progressBar.style.width = "0%";
+
+            progressTrack.setAttribute("aria-valuenow", "0");
+
+            status.textContent =
+                "Current status: Your dignity is still intact. For now.";
+
+            roastBox.classList.remove("shake");
+
+            resetButton.hidden = true;
+
+            chaosButton.focus();
+        });
+    </script>
+
+</body>
+</html>
